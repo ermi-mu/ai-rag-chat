@@ -7,7 +7,7 @@ require_once __DIR__ . '/../views/header.php';
     <div class="row align-items-center min-vh-100" style="margin-top: -80px;">
         <div class="col-lg-6 text-start">
             <h6 class="text-primary fw-bold text-uppercase mb-3" style="letter-spacing: 2px;">Advanced RAG Technology</h6>
-            <h1 class="display-4 fw-bold mb-3" style="font-family: 'Montserrat', sans-serif;">Unlock Wisdom from Your <span class="text-primary">Documents</span></h1>
+            <h1 class="display-4 fw-bold mb-3" style="font-family: 'Montserrat', sans-serif;">Smart Neural <span class="text-primary">Index</span> Explorer</h1>
             <p class="lead text-muted mb-4 fs-5">Transform your PDF, TXT, and Websites into a smart knowledge base. Experience the future of information retrieval with our premium AI-powered RAG assistant.</p>
             
             <div class="d-flex gap-2">

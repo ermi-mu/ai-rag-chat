@@ -34,7 +34,7 @@ require_once __DIR__ . '/../views/header.php';
     <div class="col-12">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h1 class="fw-bold mb-1" style="font-family: 'Montserrat', sans-serif;">Knowledge Base Admin</h1>
+                <h1 class="fw-bold mb-1" style="font-family: 'Montserrat', sans-serif;">Knowledge <span class="text-primary">Admin Panel</span></h1>
                 <p class="text-muted mb-0">Manage and process your documents for AI retrieval.</p>
             </div>
             <div class="badge bg-primary px-3 py-2 rounded-pill">Admin Access</div>

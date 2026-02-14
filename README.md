@@ -14,24 +14,20 @@ A high-performance, production-ready **Retrieval-Augmented Generation (RAG)** ch
 ## 🚀 Key Features
 
 ### 🧠 Intelligent RAG Engine
-
 - **Multi-Source Indexing**: Upload PDF/TXT files or scrape entire Websites.
 - **Advanced Embeddings**: Powered by `gemini-embedding-001` for highly accurate semantic search.
 - **Contextual Awareness**: Chatbot answers questions by "reading" your specific data.
 
 ### 🌐 Website Scraping & Analysis
-
 - **One-Click Scraping**: Provide a URL, and the system extracts, cleans, and indexes the content.
 - **AI-Generated Profiles**: Every indexed website gets a detailed AI-generated description summarizing its purpose and features.
 
 ### 🔐 Enterprise-Grade Security
-
 - **RBAC (Role-Based Access Control)**: Distinctive 'User' and 'Admin' roles.
 - **Secure Authentication**: Password hashing and protected admin routes.
 - **Session Management**: Secure user sessions across the app.
 
 ### 💄 Premium User Experience
-
 - **Glassmorphism UI**: Modern, sleek dark theme with vibrant gradients.
 - **Real-Time Streaming**: SSE (Server-Sent Events) for a smooth, typing-effect chat response.
 - **Chat Persistence**: Full history storage allowing users to resume conversations.
@@ -39,7 +35,6 @@ A high-performance, production-ready **Retrieval-Augmented Generation (RAG)** ch
 ---
 
 ## 🛠️ Tech Stack
-
 - **Backend**: Core PHP 8.1+
 - **Database**: MySQL 8.0+ (with JSON support for embeddings)
 - **AI Engine**: Google Gemini API (`gemini-1.5-flash-preview`)
@@ -49,7 +44,6 @@ A high-performance, production-ready **Retrieval-Augmented Generation (RAG)** ch
 ---
 
 ## 📦 Project Structure
-
 ```text
 ├── public/                 # Web root
 │   ├── assets/             # CSS, JS, Images
@@ -69,42 +63,34 @@ A high-performance, production-ready **Retrieval-Augmented Generation (RAG)** ch
 ## ⚙️ Setup Instructions
 
 ### 1. Prerequisites
-
 - **XAMPP** (or any LAMP/WAMP stack)
 - **Composer** installed globally
 
 ### 2. Database Initialization
-
 Create a database named `rag_chat_app` and import `schema.sql`:
-
 ```bash
 mysql -u root -p rag_chat_app < schema.sql
 ```
 
 ### 3. Environment Configuration
-
 Create a `.env` file in the root directory:
-
 ```ini
 DB_HOST=localhost
 DB_NAME=rag_chat_app
 DB_USER=root
 DB_PASS=
-GEMINI_API_KEY=AIzaSyCt5WxVDYD-QMtwZCvKcrvDiD6nV9OJ5Ug
+GEMINI_API_KEY=your_google_gemini_api_key
 GEMINI_MODEL=gemini-1.5-flash-preview
 EMBEDDING_MODEL=gemini-embedding-001
 ```
 
 ### 4. Install Dependencies
-
 ```bash
 composer install
 ```
 
 ### 5. Launch
-
 Start the built-in PHP server:
-
 ```bash
 php -S localhost:8000 -t public
 ```
@@ -112,7 +98,6 @@ php -S localhost:8000 -t public
 ---
 
 ## 📄 Documentation & Usage
-
 1. **Register**: Create an account via `register.php`.
 2. **Admin Access**: Log in as an admin to access the dashboard.
 3. **Index Knowledge**: Upload documents or scrape URLs in the Knowledge Base Admin.
@@ -121,5 +106,4 @@ php -S localhost:8000 -t public
 ---
 
 ## ⚖️ License
-
 Distributed under the MIT License. See `LICENSE` for more information.
