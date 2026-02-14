@@ -29,6 +29,7 @@ A high-performance, production-ready **Retrieval-Augmented Generation (RAG)** ch
 
 ### 💄 Premium User Experience
 - **Glassmorphism UI**: Modern, sleek dark theme with vibrant gradients.
+- **One-Click Login**: Seamless Google OAuth 2.0 integration for users.
 - **Real-Time Streaming**: SSE (Server-Sent Events) for a smooth, typing-effect chat response.
 - **Chat Persistence**: Full history storage allowing users to resume conversations.
 
@@ -40,6 +41,7 @@ A high-performance, production-ready **Retrieval-Augmented Generation (RAG)** ch
 - **AI Engine**: Google Gemini API (`gemini-1.5-flash-preview`)
 - **Frontend**: Bootstrap 5, Vanilla JS, marked.js (Markdown rendering)
 - **Scraper**: Custom `WebScraperService` with DOM parsing and fallback logic.
+- **Dependencies**: `google/apiclient`, `smalot/pdfparser`, `vlucas/phpdotenv`.
 
 ---
 
@@ -82,7 +84,19 @@ DB_PASS=
 GEMINI_API_KEY=your_google_gemini_api_key
 GEMINI_MODEL=gemini-1.5-flash-preview
 EMBEDDING_MODEL=gemini-embedding-001
+
+# Google OAuth
+GOOGLE_CLIENT_ID=your_id_here
+GOOGLE_CLIENT_SECRET=your_secret_here
+GOOGLE_REDIRECT_URI=http://localhost:8000/google-callback.php
 ```
+
+### 4. Google Cloud Setup
+For Google Login to work:
+1. Create a project in [Google Cloud Console](https://console.cloud.google.com/).
+2. Setup **OAuth Consent Screen** (External).
+3. Create **OAuth 2.0 Client ID** (Web application).
+4. Add `http://localhost:8000/google-callback.php` to **Authorized redirect URIs**.
 
 ### 4. Install Dependencies
 ```bash

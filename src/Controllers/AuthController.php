@@ -62,4 +62,60 @@ class AuthController
 
         return ['success' => false, 'message' => 'Invalid email or password.'];
     }
+
+    public function requestReset(string $email): array
+    {
+        $stmt = $this->db->prepare("SELECT id FROM users WHERE email = ?");
+        $stmt->execute([$email]);
+        $user = $stmt->fetch();
+
+        if (!$user) {
+            // For security, don't confirm if email exists, but here we will be helpful for the simulation
+            return ['success' => false, 'message' => 'Email address not found.'];
+        }
+
+        // Generate a 6-digit numeric token
+        $token = str_pad(rand(0, 999999), 6, '0', STR_PAD_LEFT);
+
+        $stmt = $this->db->prepare("UPDATE users SET reset_token = ?, reset_expires = DATE_ADD(NOW(), INTERVAL 1 HOUR) WHERE id = ?");
+        $stmt->execute([$token, $user['id']]);
+
+        // Send actual email
+        $mailService = new \App\Services\MailService();
+        $mailSent = $mailService->sendPasswordReset($email, $token);
+
+        if ($mailSent) {
+            return [
+                'success' => true, 
+                'message' => 'A password reset token has been sent to your email address.'
+            ];
+        } else {
+            return [
+                'success' => false,
+                'message' => 'Failed to send reset email. Please try again later or contact support.'
+            ];
+        }
+    }
+
+    public function resetPassword(string $email, string $token, string $newPassword): array
+    {
+        $token = trim($token);
+        if (strlen($newPassword) < 6) {
+            return ['success' => false, 'message' => 'Password must be at least 6 characters.'];
+        }
+
+        $stmt = $this->db->prepare("SELECT id FROM users WHERE email = ? AND reset_token = ? AND reset_expires > NOW()");
+        $stmt->execute([$email, $token]);
+        $user = $stmt->fetch();
+
+        if (!$user) {
+            return ['success' => false, 'message' => 'Invalid or expired reset token.'];
+        }
+
+        $hash = password_hash($newPassword, PASSWORD_DEFAULT);
+        $stmt = $this->db->prepare("UPDATE users SET password_hash = ?, reset_token = NULL, reset_expires = NULL WHERE id = ?");
+        $stmt->execute([$hash, $user['id']]);
+
+        return ['success' => true, 'message' => 'Your password has been updated!'];
+    }
 }

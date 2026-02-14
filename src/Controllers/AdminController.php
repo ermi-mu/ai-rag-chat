@@ -40,6 +40,21 @@ class AdminController
         } catch (\PDOException $e) {
             // Already exists or other error
         }
+
+        // Add google_id column to users table
+        try {
+            $this->db->exec("ALTER TABLE users ADD COLUMN google_id VARCHAR(255) UNIQUE NULL");
+        } catch (\PDOException $e) {
+            // Already exists or other error
+        }
+
+        // Add reset token columns to users table
+        try {
+            $this->db->exec("ALTER TABLE users ADD COLUMN reset_token VARCHAR(255) NULL");
+            $this->db->exec("ALTER TABLE users ADD COLUMN reset_expires DATETIME NULL");
+        } catch (\PDOException $e) {
+            // Already exists or other error
+        }
     }
 
     public function index(): array

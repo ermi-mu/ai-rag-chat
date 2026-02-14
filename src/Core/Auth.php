@@ -45,9 +45,9 @@ class Auth
         self::startSession();
         if (self::check()) {
             return [
-                'id' => $_SESSION['user_id'],
-                'username' => $_SESSION['username'],
-                'email' => $_SESSION['email'],
+                'id' => $_SESSION['user_id'] ?? null,
+                'username' => $_SESSION['username'] ?? 'Guest',
+                'email' => $_SESSION['email'] ?? '',
                 'role' => $_SESSION['role'] ?? 'user'
             ];
         }
